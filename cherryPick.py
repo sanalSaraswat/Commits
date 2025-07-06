@@ -1,4 +1,5 @@
 import subprocess
+import sys
 
 def cherryPick(branch, commitHash):
     try:
@@ -11,4 +12,10 @@ def cherryPick(branch, commitHash):
         print(f"Error during cherry-pick: {e}")
         
         
-cherryPick('feature', '8e2e3b13318f0968e3462778444f836922e51efe' )
+if __name__ == '__main__':
+    if(sys.argv) != 3:
+        print("Usage: python cherryPick.py <branch> <commit-hash>")
+        sys.exit(1)
+    branch = sys.argv[1]
+    commitHash = sys.arg[2]
+    cherryPick(branch, commitHash)
