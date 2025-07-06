@@ -5,7 +5,7 @@ def cherryPick(branch, commitHash):
     try:
         subprocess.run(['git', 'checkout', '-b', branch, 'main'])
         print(f'Branch {branch} sucessfully created!')
-        subprocess.run(['git', 'cherry-pick -m 1 ', commitHash])
+        subprocess.run(['git', 'cherry-pick', '-m', '1', commitHash])
         print(f"Successfully cherry-picked commit {commitHash}")
         
     except subprocess.CalledProcessError as e:
