@@ -3,7 +3,7 @@ import sys
 
 def cherryPick(branch, commitHash):
     try:
-        subprocess.run(['git', 'checkout', '-b', branch])
+        subprocess.run(['git', 'checkout', '-b', branch, 'main'])
         print(f'Branch {branch} sucessfully created!')
         subprocess.run(['git', 'cherry-pick', commitHash])
         print(f"Successfully cherry-picked commit {commitHash}")
@@ -13,9 +13,9 @@ def cherryPick(branch, commitHash):
         
         
 if __name__ == '__main__':
-    if(sys.argv) != 3:
+    if len(sys.argv) != 3:
         print("Usage: python cherryPick.py <branch> <commit-hash>")
         sys.exit(1)
     branch = sys.argv[1]
-    commitHash = sys.arg[2]
+    commitHash = sys.argv[2]
     cherryPick(branch, commitHash)
